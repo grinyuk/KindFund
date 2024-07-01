@@ -4,6 +4,14 @@ import css from './DonateTab.module.css';
 import {useForm} from "react-hook-form";
 import TopFive from "./TopFive/TopFive.tsx";
 
+const topFiveList = [
+    {id: 1, username: "Robert Paulson", amount: 100},
+    {id: 2, username: "Richard Morris", amount: 50},
+    {id: 3, username: "Antonio Ricardo", amount: 30},
+    {id: 4, username: "Billy Herrington", amount: 200},
+    {id: 5, username: "Michale Jackson", amount: 500}
+]
+
 const DonateTab : FC = () => {
     const [
         activePrice,
@@ -19,7 +27,6 @@ const DonateTab : FC = () => {
     } = useForm();
 
     const onSubmit = (data: any) => {
-        // FIXME bug with link opening
         window.open(
             'https://send.monobank.ua/jar/49hJS2Jaed' + '?a=' + data?.amount + '&t=' + data?.message,
             '_blank'
@@ -88,8 +95,8 @@ const DonateTab : FC = () => {
                 </form>
             </div>
             <div className={css.rightPanel}>
-                <TopFive title={"Top 5"}/>
-                <TopFive title={"Latest 5"}/>
+                <TopFive title={"Top 5"} userList={topFiveList.slice(0).sort((a, b) => b.amount - a.amount)}/>
+                <TopFive title={"Latest 5"} userList={topFiveList}/>
             </div>
         </div>
     );
