@@ -1,1 +1,2 @@
-# Makosite
+# KindFund
+## Diploma project IFNTUNG
